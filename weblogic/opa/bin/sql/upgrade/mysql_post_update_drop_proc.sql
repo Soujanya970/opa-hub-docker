@@ -1,0 +1,7 @@
+
+-- drop historical procedures
+DROP PROCEDURE IF EXISTS OPAAddColumnIfNotExists;
+DROP PROCEDURE IF EXISTS OPADropColumnIfExists;
+DROP PROCEDURE IF EXISTS OPAAddIndexIfNotExists;
+DROP PROCEDURE IF EXISTS OPADropIndexIfExists;
+DROP PROCEDURE IF EXISTS OPAUpgradeAnalysisParameters;
