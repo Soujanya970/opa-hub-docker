@@ -21,8 +21,9 @@ if ! docker run --name opa-mysql-full -e MYSQL_ROOT_PASSWORD=Passw0rd --health-c
 fi
 
 echo Starting Weblogic container
-if ! docker run --name opa-weblogic-full -v ${pwd}/domain.properties:/u01/oracle/properties/domain.properties -p 7001:7001 -e ADMINISTRATION_PORT_ENABLED=false --link opa-mysql-full:opa-mysql-full --health-cmd="curl -f http://localhost:7001/console || exit 1" -d container-registry.oracle.com/middleware/weblogic:12.2.1.3; then
-    exit 1
+if ! docker run -d --name opa-weblogic-full -p 7001:7001 -p 9002:9002 \
+      -v $PWD:/u01/oracle/properties container-registry.oracle.com/middleware/weblogic:12.2.1.3
+      exit 1
 fi
 
 waitForContainer opa-mysql-full
