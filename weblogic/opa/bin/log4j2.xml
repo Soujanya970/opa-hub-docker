@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+  <Appenders>
+    <Console name="STDOUT" target="SYSTEM_OUT">
+      <ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+      <PatternLayout pattern="%-5level (%F:%L) - %msg%n"/>
+    </Console>
+    <File name="install-log" fileName="install.log" append="false">
+      <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+      <PatternLayout pattern="%d{ISO8601} %-5level (%logger) - %msg%n"/>
+    </File>
+  </Appenders>
+  <Loggers>
+    <Root level="INFO">
+      <AppenderRef ref="install-log"/>
+      <AppenderRef ref="STDOUT"/>
+    </Root>
+  </Loggers>
+</Configuration>
